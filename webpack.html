@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webpack</title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none}
+        html,body{background: black;}
+        .wrapper{transform-style: preserve-3d;}
+        .u1,.u2{position: absolute;left: 50%;margin-left: -200px;top: 200px;}
+        .u1{width: 400px;height: 400px;transform: rotateX(-33.5deg) rotateY(45deg);transform-style: preserve-3d;}
+        .u1 .l1{height: 400px;width: 400px;text-align: center;opacity: .5;line-height: 400px;position: absolute;}
+        .u1 .l1:nth-of-type(1){color: orange;background: rgb(196, 215, 240);transform: rotateY(90deg) translateZ(200px)}
+        .u1 .l1:nth-of-type(2){color: yellow;background: rgb(180, 148, 240);transform: rotateY(-90deg) translateZ(200px)}
+        .u1 .l1:nth-of-type(3){color: red;background: rgb(135, 206, 235);transform: rotateX(90deg) translateZ(200px)}
+        .u1 .l1:nth-of-type(4){color: springgreen;background: rgb(140, 166, 226);transform: rotateX(-90deg) translateZ(200px)}
+        .u1 .l1:nth-of-type(5){color: #72ffdf;background: rgb(214, 30, 255);transform: rotateY(180deg) translateZ(200px)}
+        .u1 .l1:nth-of-type(6){color: blue;background: rgb(73, 112, 255);transform: translateZ(200px)}
+        .u2{width: 200px;height: 200px;transform: translateX(100px) translateY(100px) rotateX(-33.5deg) rotateY(45deg);transform-style: preserve-3d;}
+        .u2 .l2{height: 200px;width: 200px;text-align: center;line-height: 200px;position: absolute;}
+        .u2 .l2:nth-of-type(1){background: rgb(196, 215, 240);transform: rotateY(90deg) translateZ(100px)}
+        .u2 .l2:nth-of-type(2){background: rgb(171, 142, 230);transform: rotateY(-90deg) translateZ(100px)}
+        .u2 .l2:nth-of-type(3){background: rgb(135, 206, 235);transform: rotateX(90deg) translateZ(100px)}
+        .u2 .l2:nth-of-type(4){background: rgb(140, 166, 226);transform: rotateX(-90deg) translateZ(100px)}
+        .u2 .l2:nth-of-type(5){background: rgb(214, 30, 255);transform: rotateY(180deg) translateZ(100px)}
+        .u2 .l2:nth-of-type(6){background: rgb(73, 112, 255);transform: translateZ(100px)}
+        @keyframes show{0%{transform: rotateX(-33.5deg) rotateY(45deg)}
+         100%{transform: rotateX(-33.5deg) rotateY(225deg)}}
+        @keyframes run{0%{transform: translateX(100px) translateY(100px) rotateX(-33.5deg) rotateY(45deg)}
+         100%{transform: translateX(100px) translateY(100px) rotateX(-33.5deg) rotateY(-315deg);}}
+        .utc{animation: show 1s linear 1;}  .utd{animation: run 1s linear 1;}
+        .u1:hover .l1{background: currentColor;opacity: .8;box-shadow: 0 0 20vh currentColor;border: 4px solid black;}
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <ul class="u1">
+        <li class="l1"></li>
+        <li class="l1"></li>
+        <li class="l1"></li>
+        <li class="l1"></li>
+        <li class="l1"></li>
+        <li class="l1"></li>
+    </ul>
+    <ul class="u2">
+        <li class="l2"></li>
+        <li class="l2"></li>
+        <li class="l2"></li>
+        <li class="l2"></li>
+        <li class="l2"></li>
+        <li class="l2"></li>
+    </ul>
+</div>
+<script>
+    var ul = document.querySelector('.u1')
+    var uls = document.querySelector('.u2')
+    setInterval(function() {
+        ul.className = 'u1'
+        uls.className='u2'
+        setTimeout(function() {
+            ul.classList.add('utc')
+            uls.classList.add('utd')
+        }, 1000);
+    }, 4000);
+</script>
+</body>
+</html>
